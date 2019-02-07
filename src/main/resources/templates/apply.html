@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ArteLaguna - Apply now</title>
+    <link rel="icon"
+          type="image/png"
+          href="/images/favicon.ico"/>
+</head>
+<style>
+    body {
+        font-family: robotto;
+        margin: 0px;
+        background-color: #f4f4f4;
+    }
+    ul {
+        font-size: large;
+        letter-spacing: 5px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 30px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #912121;
+    }
+
+    @font-face {
+        font-family: lobster;
+        src: url("/fonts/Lobster-Regular.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: robotto;
+        src: url("/fonts/RobotoCondensed-Light.ttf") format('truetype');
+    }
+
+    .header {
+        height: 110px;
+        background: #a00606;
+        background: linear-gradient(to bottom right, #a52727, #ff6363);
+        padding-left: 30px;
+        margin-top: 0px;
+        position: relative;
+        margin-bottom: 0px;
+        font-size: 30px;
+        font-family: lobster,sans-serif;
+        text-decoration: none;
+        color: whitesmoke;
+        text-shadow: 2px 2px 4px #000000;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .line {
+        background-color: whitesmoke;
+        height: 1px;
+    }
+
+    fieldset {
+        text-align: center;
+        position: relative;
+        left: 25%;
+        padding: 30px;
+        background-color: white;
+        width: 50%;
+        border-radius: 10px;
+        margin: 20px;
+        border: none;
+    }
+
+    .authors {
+        text-align: right;
+        padding-right: 25px;
+    }
+
+</style>
+<body>
+<ul>
+    <li><a class="active" href="/home">H<small>OME</small></a></li>
+    <li><a href="/contestants/apply">A<small>PPLY</small></a></li>
+    <li><a href="/about">A<small>BOUT</small> U<small>S</small></a></li>
+    <li style="float: right"><a href="/accounts/login"><b>L<small>OG</small> I<small>N</small></b></a></li>
+</ul>
+<div class="line"> </div>
+<div class="header">You are about to become a part of our contestants community!<br/>
+                    Please fill the form bellow.</div>
+<form action="#" th:action="@{/contestants/apply}" th:object="${contestant}" method="post">
+    <fieldset><h1>Step 1: Account Information</h1>
+        Email: <input type="email"  th:field="*{account.email}" name="email" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;" />
+        <br/><br/>
+        Password: <input type="password" th:field="*{account.password}" name="password" value="something" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;" />
+        <br/><br/>
+        Confirm password: <input type="password" name="passwordConfirmation" value="something" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;" />
+        <br/><br/>
+        </fieldset>
+
+    <fieldset><h1>Step 2: Personal Information</h1>
+        Name: <input type="text" th:field="*{name}" required="required" name="name" value="Your name" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Surname: <input type="text" th:field="*{surname}" name="surname" value="Your surname" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Address: <input type="text" th:field="*{address}" name="address" value="Your address" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Place of Birth: <input type="text" th:field="*{placeOfBirth}" name="placeOfBirth" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Date of Birth: <input type="date" th:field="*{dateOfBirth}" name="dateOfBirth" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Phone number: <input type="text" th:field="*{phoneNumber}" name="phone" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Website: <input type="text" th:field="*{website}" name="website" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;"/>
+        <br/><br/>
+        Biography:<br/> <textarea rows="4" cols="50" th:field="*{biography}" name="biography" style="margin-left: 10px; padding: 5px; font-family: robotto; letter-spacing: 2px; border-radius: 10px;">Enter here your short biography</textarea><br/><br/>
+        Copy of your id card (*.jpg, *.jpeg, *.png):
+        <input type="file" name="idCopy" accept=".jpg, .jpeg, .png" style="margin-left: 10px"/><br/><br/>
+    </fieldset>
+
+    <!--<fieldset><h1>Step 4: Payment</h1>-->
+        <!--Payment of the application fee of:<br/>-->
+        <!--<input type="radio" name="payment" value="regular1artwork" checked> &euro;55 (1 artwork)-->
+        <!--<input type="radio" name="payment" value="regular2artworks"> &euro;105 (2 artworks)<br/>-->
+        <!--<input type="radio" name="payment" value="regular3artworks"> &euro;155 (3 artworks)-->
+        <!--<input type="radio" name="payment" value="regular4artworks"> &euro;205 (4 artworks)<br/><br/>-->
+        <!--for artist Under 25:<br/>-->
+        <!--<input type="radio" name="payment" value="discount1artwork"> &euro;50 (1 artwork)-->
+        <!--<input type="radio" name="payment" value="discount2artworks"> &euro;95 (2 artworks)<br/>-->
+        <!--<input type="radio" name="payment" value="discount3artworks"> &euro;140 (3 artworks)-->
+        <!--<input type="radio" name="payment" value="discount4artworks"> &euro;185 (4 artworks)<br/>-->
+        <!--<br/>-->
+        <!--payed on (date): <input type="date" name="paymentDate" value="" style="margin-left: 10px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;">-->
+        <!--<br/><br/>-->
+        <!--to Associazione Culturale MoCA with the reason of “Prize 17.18” through:<br/>-->
+        <!--<input type="radio" name="paymentType" value="paymentType1" checked> <b>Bank Transfer</b> Banca Popolare dell'Emilia Romagna - BIC: BPMOIT22XXX-->
+        <!--IBAN: IT 68 N 05387 61800 000002469464<br/>-->
+        <!--<input type="radio" name="paymentType" value="paymentType2"> <b>Credit Card</b> on artelagunaprize.com<br/>-->
+        <!--<input type="radio" name="paymentType" value="paymentType3"> <b>MoneyGram</b> to Laura Gallon - Mogliano V.To (TV) Ital<br/>-->
+        <!--<br/><br/>-->
+        <!--Copy of the payment of the entry fee (*.jpg, *.jpeg, *.png):-->
+        <!--<input type="file" name="paymentCopy" accept=".jpg, .jpeg, .png" style="margin-left: 10px"><br/><br/>-->
+        <!--<br/>-->
+        <!--<small style="color: #a00606">I accept:</small><br/>-->
+        <!--<small>1. All rules of the regulation published on <b>www.artelagunaprize.com</b><br/>-->
+            <!--2. To give the Cultural Association MoCA the right of replication of the works and texts for-->
+            <!--the realization of the Catalogue, the Archive of entries, the Publication of the artworks in the-->
+            <!--website of the prize and other forms of communication and activities of the organization.<br/>-->
+            <!--3. To give the Cultural Association MoCA the authorization to the treatment of the personal-->
+            <!--data according to the law on the privacy (Legislative Decree n°675/96 and n°196/2003)</small><br/><br/>-->
+        <input type="submit" value="SUBMIT &amp; CONTINUE" style="
+        height: 55px;
+        width: 240px;
+        border-radius: 10px;
+        font-size: 20px;
+        letter-spacing: 3px;
+        background: #a00606;
+        background: linear-gradient(to bottom right, #a52727, #ff6363);
+        border: none;
+        /*text-shadow: 2px 2px 4px #000000;*/
+        font-family: robotto;
+        color: whitesmoke"
+        />
+    <!--</fieldset>-->
+</form>
+<div class="authors">All the rights reserved to: Maria Filemonowicz, Lukasz Wroblewski &amp; Dariusz Strzelecki</div>
+</body>
+</html>

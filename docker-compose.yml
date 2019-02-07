@@ -1,0 +1,15 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432" # Exposed for development only, remove after switching to production
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ArteLagunaDB
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

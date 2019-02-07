@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ArteLaguna - Vote!</title>
+    <link rel="icon"
+          type="image/png"
+          href="/images/favicon.ico"/>
+</head>
+<style>
+    body {
+        font-family: robotto;
+        margin: 0px;
+        background-color: #f4f4f4;
+    }
+    ul {
+        font-size: large;
+        letter-spacing: 5px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 30px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #912121;
+    }
+
+    .active2 {
+        background-color: #5b5b5b;
+    }
+
+    .line {
+        background-color: whitesmoke;
+        height: 1px;
+    }
+
+
+    @font-face {
+        font-family: lobster;
+        src: url("/fonts/Lobster-Regular.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: robotto;
+        src: url("/fonts/RobotoCondensed-Light.ttf") format('truetype');
+    }
+
+
+    .authors {
+        text-align: right;
+        padding-right: 25px;
+    }
+
+    .content {
+        background-color: white;
+        border-radius: 10px;
+        width: 50%;
+        margin: 20px auto auto;
+        padding: 20px;
+    }
+
+    th {
+        border-radius: 10px;
+        border: none;
+        letter-spacing: 3px;
+        background: #a00606;
+        background: linear-gradient(to bottom right, #a52727, #ff6363);
+        font-family: robotto;
+        padding: 10px;
+        color: whitesmoke;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+
+    }
+
+</style>
+<body>
+<ul>
+    <li><a class="active" href="/home">H<small>OME</small></a></li>
+    <li><a href="/about">A<small>BOUT</small> U<small>S</small></a></li>
+    <li style="float: right"><a class="active2" href="/accounts/logout"><b>L<small>OG</small> O<small>UT</small></b></a></li>
+    <li style="float: right"><a href="/jury/profile"><b>V<small>IEW</small> Y<small>OUR</small> P<small>ROFILE</small></b></a></li>
+    <li style="float: right"><a href="/entries/view"><b>V<small>OTE</small></b></a></li>
+
+</ul>
+<div class="line"> </div>
+<div class="content">
+    <h1 align="center" style="font-size: 50px">Vote for the artworks!</h1>
+    <table style="width:100%; text-align: center">
+        <tr>
+            <th>Entry</th>
+            <th>Average vote</th>
+            <th>Your vote</th>
+        </tr>
+        <tr th:each="entry : ${entries}">
+            <td><a th:href="@{'/entries/view/' + ${entry.id}}" th:text="${entry.author.name + ' ' + entry.author.surname + ' (' + entry.artworks.size() + ')'}">Entry link</a></td>
+            <td th:text="${entry.getAverageRating()}">Average vote</td>
+            <td>
+                <form action="#" th:action="@{'/entries/' + ${entry.id} + '/rate'}" method="post">
+                    <input type="submit" name="rating" value="1" style="background-image: url(../images/star.jpg); background-size: cover; border: none"/>
+                    <input type="submit" name="rating" value="2" style="background-image: url(../images/star.jpg); background-size: cover; border: none"/>
+                    <input type="submit" name="rating" value="3" style="background-image: url(../images/star.jpg); background-size: cover; border: none"/>
+                    <input type="submit" name="rating" value="4" style="background-image: url(../images/star.jpg); background-size: cover; border: none"/>
+                    <input type="submit" name="rating" value="5" style="background-image: url(../images/star.jpg); background-size: cover; border: none"/>
+                </form>
+            </td>
+        </tr>
+    </table><br/>
+
+
+
+    <br/>
+</div>
+<br/>
+<div class="authors">All the rights reserved to: Maria Filemonowicz, Lukasz Wroblewski &amp; Dariusz Strzelecki</div>
+
+</body>
+</html>

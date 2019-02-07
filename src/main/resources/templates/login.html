@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>ArteLaguna - Log In</title>
+    <link rel="icon"
+          type="image/png"
+          href="/images/favicon.ico"/>
+</head>
+<style>
+    body {
+        font-family: robotto;
+        margin: 0px;
+        background-color: #f4f4f4;
+    }
+    ul {
+        font-size: large;
+        letter-spacing: 5px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 30px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #912121;
+    }
+
+    .login {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    @font-face {
+        font-family: lobster;
+        src: url("/fonts/Lobster-Regular.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: robotto;
+        src: url("/fonts/RobotoCondensed-Light.ttf") format('truetype');
+    }
+
+    .login h1 {
+        margin-bottom: 0px;
+    }
+</style>
+<body>
+<ul>
+    <li><a class="active" href="/home">H<small>OME</small></a></li>
+    <li><a href="/contestants/apply">A<small>PPLY</small></a></li>
+    <li><a href="/accounts/login">L<small>OG</small> I<small>N</small></a></li>
+</ul>
+<div class="login">
+    <br/>
+    <h1>Enter your login and password:</h1><br/>
+    <form action="#" th:action="@{/accounts/login}" th:object="${credentials}" method="post">
+        Login: <input type="text" th:field="*{email}" name="login" value="Your login" style="margin-left: 70px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;" />
+        <br/><br/>
+        Password: <input type="password" th:field="*{password}" name="password" value="Your password" style="margin-left: 20px; height: 30px; text-align: center; font-family: robotto; letter-spacing: 2px; border-radius: 10px; font-size: 20px;" />
+        <br/><br/>
+        <input type="submit" value="LOGIN" style="
+        height: 55px;
+        width: 120px;
+        border-radius: 10px;
+        font-size: 30px;
+        letter-spacing: 3px;
+        background: #a00606;
+        background: linear-gradient(to bottom right, #a52727, #ff6363);
+        border: none;
+        /*text-shadow: 2px 2px 4px #000000;*/
+        font-family: robotto;
+        color: whitesmoke"
+        />
+    </form>
+</div>
+
+</body>
+</html>
